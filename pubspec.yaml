@@ -1,0 +1,64 @@
+name: fooder
+description: "A new Flutter project."
+publish_to: 'none'
+version: 1.0.0+1
+
+environment:
+  sdk: ^3.11.4
+
+dependencies:
+  flutter:
+    sdk: flutter
+  cupertino_icons: ^1.0.8
+  firebase_core: ^4.7.0
+  firebase_auth: ^6.4.0
+  cloud_firestore: ^6.3.0
+  form_flutter: ^1.0.2
+  flutter_dotenv: ^5.2.1
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+  flutter_lints: ^6.0.0
+  flutter_launcher_icons: ^0.14.4
+
+flutter:
+  uses-material-design: true
+  assets:
+    - assets/images/real/
+    - assets/images/virtual/
+    - .env
+  fonts:
+    - family: Metropolis
+      fonts:
+        - asset: assets/fonts/Metropolis-Regular.ttf
+        - asset: assets/fonts/Metropolis-RegularItalic.ttf
+          style: italic
+        - asset: assets/fonts/Metropolis-Medium.ttf
+          weight: 500
+        - asset: assets/fonts/Metropolis-MediumItalic.ttf
+          weight: 500
+          style: italic
+        - asset: assets/fonts/Metropolis-SemiBold.ttf
+          weight: 600
+        - asset: assets/fonts/Metropolis-SemiBoldItalic.ttf
+          weight: 600
+          style: italic
+        - asset: assets/fonts/Metropolis-Bold.ttf
+          weight: 700
+        - asset: assets/fonts/Metropolis-BoldItalic.ttf
+          weight: 700
+          style: italic
+        - asset: assets/fonts/Metropolis-ExtraBold.ttf
+          weight: 800
+        - asset: assets/fonts/Metropolis-ExtraBoldItalic.ttf
+          weight: 800
+          style: italic
+
+flutter_launcher_icons:
+  android: true
+  ios: true
+  image_path: "assets/applogo.png"
+  remove_alpha_ios: true
+  adaptive_icon_background: "#FFFFFF"
+  adaptive_icon_foreground: "assets/applogo.png"
