@@ -1,154 +1,174 @@
-# Meal Monkey
+# Fooder
 
-A Flutter food-ordering app for browsing dishes, building a cart, and placing delivery orders. Meal Monkey pairs a customer-facing mobile UI with Firebase-backed data and an admin dashboard for managing the menu and orders.
+<p align="center">
+  <a href="https://github.com/azrul16/fooder/stargazers"><img alt="GitHub stars" src="https://img.shields.io/github/stars/azrul16/fooder?style=for-the-badge" /></a>
+  <a href="https://github.com/azrul16/fooder/network/members"><img alt="GitHub forks" src="https://img.shields.io/github/forks/azrul16/fooder?style=for-the-badge" /></a>
+  <a href="LICENSE"><img alt="License: MIT" src="https://img.shields.io/badge/License-MIT-green.svg?style=for-the-badge" /></a>
+  <img alt="Flutter" src="https://img.shields.io/badge/Flutter-3.x-02569B?style=for-the-badge&logo=flutter&logoColor=white" />
+  <img alt="Firebase" src="https://img.shields.io/badge/Firebase-Auth%20%7C%20Firestore-FFCA28?style=for-the-badge&logo=firebase&logoColor=black" />
+</p>
 
-Built with **Flutter**, **Dart**, **Firebase Authentication**, and **Cloud Firestore**, with a custom Metropolis typeface and orange-accented interface.
+<p align="center">
+  <img src="assets/images/virtual/MealMonkeyLogo.png" alt="Fooder Banner" width="220" />
+</p>
 
-## App UI showcase
+<p align="center">
+  A Flutter + Firebase food ordering app with customer flow and admin panel management.
+</p>
 
-Explore the customer journey through the mockups below. Images are stored in [`mockups/`](mockups/) and can be opened at full size.
+<p align="center">
+  <a href="#installation">Installation</a> |
+  <a href="#contributing">Contributing</a> |
+  <a href="#license">License</a>
+</p>
 
-### Welcome and sign in
+## Overview
 
-| Splash | Landing | Login |
-| :---: | :---: | :---: |
-| <img src="mockups/01_splash.png" alt="Meal Monkey splash screen" width="240"> | <img src="mockups/02_landing.png" alt="Meal Monkey landing screen" width="240"> | <img src="mockups/03_login.png" alt="Meal Monkey login screen" width="240"> |
+Fooder is a multi-screen Flutter application inspired by modern food delivery products.  
+It includes:
 
-### Discover your next meal
-
-| Home | Menu | Food details |
-| :---: | :---: | :---: |
-| <img src="mockups/04_home.png" alt="Home screen with food search, categories, and popular dishes" width="240"> | <img src="mockups/05_menu.png" alt="Meal Monkey menu screen" width="240"> | <img src="mockups/06_food_detail.png" alt="Food detail screen" width="240"> |
-
-### Order and checkout
-
-| My order | Checkout |
-| :---: | :---: |
-| <img src="mockups/07_my_order.png" alt="My order screen" width="240"> | <img src="mockups/08_checkout.png" alt="Checkout screen" width="240"> |
-
-### Offers and profile
-
-| Offers | Profile |
-| :---: | :---: |
-| <img src="mockups/09_offers.png" alt="Meal Monkey offers screen" width="240"> | <img src="mockups/10_profile.png" alt="Customer profile screen" width="240"> |
+- Customer authentication and profile management.
+- Food browsing with categories, search, offers, and item details.
+- Cart, checkout, and order placement flow.
+- User notifications and inbox updates.
+- Admin panel to manage foods, discounts, and order statuses.
 
 ## Features
 
-### Customer experience
+- Firebase Authentication for user sign-in/sign-up.
+- Firestore-backed data model for users, foods, carts, orders, payment methods, and inbox.
+- Admin login via environment variables (`ADMIN_USERNAME`, `ADMIN_PASSWORD`).
+- Product management tools:
+- Add, edit, hide, and delete food items.
+- Category-aware item management.
+- Discount offer support.
+- Order operations:
+- Track and update order states (`pending`, `accepted`, `preparing`, `on_the_way`, `delivered`, `cancelled`).
+- Customer inbox notifications on status updates.
+- Reusable widgets for navigation, search, and inputs.
+- BDT currency formatting utility.
 
-- Onboarding, account registration, and email/password sign-in.
-- Firestore-backed food browsing with category filters, search, sorting, and popular dishes.
-- Food detail pages with descriptions, ratings, and pricing in BDT.
-- A persistent cart with quantity updates and item removal.
-- Checkout with a delivery address, order summary, and cash on delivery.
-- Order status updates and inbox messages.
-- Profile editing, saved payment methods, and screens for offers and notifications.
+## Tech Stack
 
-### Admin dashboard
+- Flutter (Dart)
+- Firebase Core
+- Firebase Auth
+- Cloud Firestore
+- flutter_dotenv
 
-- Dashboard metrics for foods, orders, and gross sales.
-- Add, edit, preview, hide, and delete menu items.
-- Review customer orders and update their status.
-- Automatically write customer inbox notifications when order statuses change.
+## Screenshots
 
-## Getting started
+> Temporary visuals from current assets. Replace with real app screenshots for production-grade presentation.
 
-### Prerequisites
+| Intro | Home Theme | Login Theme |
+|---|---|---|
+| <img src="assets/images/virtual/vector1.png" alt="Intro Screen" width="220"/> | <img src="assets/images/virtual/vector2.png" alt="Home Preview" width="220"/> | <img src="assets/images/virtual/login_bg.png" alt="Login Preview" width="220"/> |
 
-- Flutter SDK with Dart **3.11.4 or a compatible 3.x version** (`^3.11.4`).
-- An Android device or emulator and the Android development toolchain.
-- A Firebase project with **Email/Password Authentication** and **Cloud Firestore** enabled.
+## Project Structure
 
-The included Firebase options support Android. Other targets require additional Firebase configuration.
+```text
+lib/
+  const/              # app colors and constants
+  screens/            # all user + admin screens
+  utils/              # helpers and formatters
+  widgets/            # shared UI components
+  main.dart           # app entry point and routes
+  firebase_options.dart
+assets/
+  images/
+  fonts/
+```
 
-### 1. Clone and install
+## Prerequisites
+
+- Flutter SDK (stable)
+- Dart SDK (compatible with Flutter)
+- Firebase project (Android configured in current setup)
+- Android Studio or VS Code with Flutter extensions
+
+## Installation
+
+1. Clone the repository:
 
 ```bash
-git clone https://github.com/Azrul16/Meal-Monkey.git
-cd Meal-Monkey
+git clone https://github.com/azrul16/fooder.git
+cd fooder
+```
+
+2. Install dependencies:
+
+```bash
 flutter pub get
 ```
 
-### 2. Configure the environment
+3. Create environment file:
 
-Copy [`.env.example`](.env.example) to `.env` in the project root and replace the placeholders with your Firebase project values and admin login credentials:
-
-```env
-FIREBASE_API_KEY=your_firebase_api_key
-FIREBASE_APP_ID=your_android_firebase_app_id
-FIREBASE_MESSAGING_SENDER_ID=your_sender_id
-FIREBASE_PROJECT_ID=your_project_id
-FIREBASE_STORAGE_BUCKET=your_storage_bucket
-ADMIN_USERNAME=admin@example.com
-ADMIN_PASSWORD=your_admin_password
+```bash
+cp .env.example .env
 ```
 
-The app loads `.env` at startup, and `lib/firebase_options.dart` uses it to initialize Firebase for Android.
+4. Fill `.env` with real values:
 
-### 3. Run the app
+- `FIREBASE_API_KEY`
+- `FIREBASE_APP_ID`
+- `FIREBASE_MESSAGING_SENDER_ID`
+- `FIREBASE_PROJECT_ID`
+- `FIREBASE_STORAGE_BUCKET`
+- `ADMIN_USERNAME`
+- `ADMIN_PASSWORD`
+
+5. Run the app:
 
 ```bash
 flutter run
 ```
 
-Use the admin credentials from `.env` on the login screen to open the admin dashboard. Menu items can be added through the dashboard and are stored in the `foods` collection.
+## Firebase Notes
 
-For additional platforms, use the FlutterFire CLI to generate the appropriate configuration:
+- Current project configuration includes Firebase options for **Android**.
+- If you want iOS/Web/Desktop Firebase support, reconfigure using FlutterFire CLI and update `lib/firebase_options.dart`.
 
-```bash
-flutterfire configure
-```
-
-Review the generated options and platform setup before running on a new target.
-
-## Project structure
-
-```text
-lib/
-  const/                 Shared colors
-  screens/               Customer screens and admin dashboard
-  utils/                 Formatting and UI helpers
-  widgets/               Reusable UI components
-  firebase_options.dart  Platform-specific Firebase options
-  main.dart              Startup, routes, and theme
-assets/
-  fonts/                 Metropolis font family
-  images/                Food, brand, and interface assets
-mockups/                 App UI showcase images
-test/                    Flutter tests
-```
-
-Platform shells are included for Android, iOS, web, Linux, macOS, and Windows.
-
-## Firestore collections
-
-| Path | Purpose |
-| --- | --- |
-| `foods/{foodId}` | Menu details, pricing, ratings, images, and availability |
-| `users/{uid}` | Customer profile and delivery address |
-| `users/{uid}/cart/{cartItemId}` | Customer cart items |
-| `users/{uid}/payment_methods/{methodId}` | Saved payment method records |
-| `users/{uid}/inbox/{messageId}` | Customer messages and order updates |
-| `orders/{orderId}` | Order items, totals, delivery details, and status |
-
-Orders use these statuses: `pending`, `accepted`, `preparing`, `on_the_way`, `delivered`, and `cancelled`.
-
-## Development commands
+## Scripts and Commands
 
 ```bash
 flutter analyze
 flutter test
-flutter build apk
-dart run flutter_launcher_icons
+flutter run
 ```
 
-## Current scope
+## Contributing
 
-- Checkout uses cash on delivery; saved payment method screens do not imply an integrated payment gateway.
-- Google and Facebook login buttons are present, but their authentication flows are not configured.
-- Firebase options are currently configured for Android only.
-- Admin login compares credentials bundled in the app's `.env`; production admin authorization needs server-enforced access controls and appropriate Firestore rules.
+Contributions are welcome and appreciated.
+
+1. Fork this repository.
+2. Clone your fork locally.
+3. Create a new branch:
+
+```bash
+git checkout -b feature/your-feature-name
+```
+
+4. Commit your changes:
+
+```bash
+git commit -m "feat: add your feature"
+```
+
+5. Push and open a Pull Request.
+
+## Support the Project
+
+If this project helped you, please:
+
+- Star this repository.
+- Fork it.
+- Share it with others.
+- Contribute improvements.
 
 ## License
 
-No license file is currently included in this repository.
+This project is licensed under the MIT License. See the [LICENSE](LICENSE) file for details.
+
+## Author
+
+**@azrul16**
